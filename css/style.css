@@ -31,16 +31,18 @@
 }
 
 :root {
-  --primary: #0284c7;
-  --primary-hover: #0369a1;
-  --primary-light: #f0f9ff;
-  --primary-border: #bae6fd;
-  --accent: #0f766e;
-  --accent-light: #f0fdfa;
+  --primary: #16a34a;
+  --primary-hover: #15803d;
+  --primary-light: #f0fdf4;
+  --primary-border: #bbf7d0;
+  --accent: #ea580c;
+  --accent-hover: #c2410c;
+  --accent-light: #fff7ed;
+  --accent-border: #fed7aa;
   
-  --bg-page: #f8fafc;
+  --bg-page: #f8faf8;
   --bg-card: #ffffff;
-  --bg-subtle: #f1f5f9;
+  --bg-subtle: #f0f4f1;
   --bg-dark: #0f172a;
   
   --text-main: #0f172a;
@@ -348,9 +350,9 @@ ul {
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.9rem;
-  background-color: var(--primary-light);
-  color: var(--primary);
-  border: 1px solid var(--primary-border);
+  background-color: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
   border-radius: var(--radius-full);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -432,6 +434,10 @@ ul {
   display: block;
 }
 
+.hero-stats .stat-item:nth-child(2) .stat-val {
+  color: var(--accent);
+}
+
 .stat-label {
   font-size: 0.75rem;
   color: var(--text-muted);
@@ -472,6 +478,13 @@ ul {
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
+  transition: transform var(--transition);
+}
+
+.features-grid .feature-card:nth-child(2) .feature-icon-wrapper,
+.features-grid .feature-card:nth-child(4) .feature-icon-wrapper {
+  background-color: var(--accent-light);
+  color: var(--accent);
 }
 
 .feature-icon-wrapper svg {
@@ -566,6 +579,7 @@ ul {
   padding: 0.25rem 0.85rem;
   background-color: var(--accent-light);
   color: var(--accent);
+  border: 1px solid var(--accent-border);
   border-radius: var(--radius-full);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -610,8 +624,8 @@ ul {
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
-  background-color: var(--primary-light);
-  border: 1px solid var(--primary-border);
+  background-color: var(--accent-light);
+  border: 1px solid var(--accent-border);
   border-radius: var(--radius-md);
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -623,7 +637,7 @@ ul {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  color: var(--primary);
+  color: var(--accent);
   margin-top: 2px;
 }
 
@@ -699,6 +713,11 @@ ul {
   justify-content: center;
   font-weight: 700;
   font-size: 0.875rem;
+}
+
+.dns-grid .dns-card:nth-child(2) .dns-card-badge {
+  background-color: var(--accent-light);
+  color: var(--accent);
 }
 
 .dns-card-title {
