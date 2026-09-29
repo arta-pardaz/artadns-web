@@ -1,0 +1,28 @@
+﻿# ArtaDNS
+
+> ArtaDNS is a smart DNS benchmarking and switching utility for Microsoft Windows, developed by Arta Pardaz.
+> نرم‌افزار آرتا دی‌ان‌اس ابزاری هوشمند برای سنجش پینگ، انتخاب و تنظیم بهترین سرور DNS در سیستم‌عامل ویندوز است.
+
+ArtaDNS tests real-time latency and stability of various DNS servers directly on the user's internet connection, recommending and applying the optimal DNS server with a single click to reduce ping, improve stability, and enhance gaming and web browsing experiences.
+
+## Key Features
+- **Real-Time Benchmarking**: Measures ping and response quality for multiple public and optimized DNS providers.
+- **One-Click Activation**: Changes Windows network adapter DNS automatically without needing manual configuration.
+- **Cache Flushing & Reset**: Easily restore default network settings (DHCP) or flush DNS cache when needed.
+- **Optimized for Gaming & Browsing**: Helps reduce packet jitter and connection lag for gamers and everyday browsing.
+- **Lightweight & Clean UI**: Native, modern interface tailored for Windows 10 and 11.
+
+## Software Specifications
+- **Platform**: Microsoft Windows 10 / Windows 11
+- **Current Version**: 1.0.0
+- **Developer**: Arta Pardaz Sepahan (آرتا پرداز سپاهان)
+- **Official Website**: https://artadns.ir/
+- **Developer Website**: https://artapardaz.com/
+- **Direct Download**: https://artadns.ir/downloads/ArtaDNS_v1.0.0.zip
+
+## Contact & Channels
+- **Phone**: +98 31 95010380 (031-95010380)
+- **Address**: Isfahan, Amadegah St., Sepahan Complex, Iran
+- **Eitaa**: https://eitaa.com/ArtaPardaz
+- **Bale**: https://ble.ir/ARTAPARDAZSEPAHAN
+- **Rubika**: https://rubika.com/Artapardaz
