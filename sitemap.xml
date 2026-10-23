@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://artadns.ir/</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://artadns.ir/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://artadns.ir/"/>
   </url>
   <url>
     <loc>https://artadns.ir/dns-gaming.html</loc>
-    <lastmod>2026-10-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://artadns.ir/dns-gaming.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://artadns.ir/dns-gaming.html"/>
+  </url>
+  <url>
+    <loc>https://artadns.ir/download.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://artadns.ir/download.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://artadns.ir/download.html"/>
   </url>
 </urlset>
