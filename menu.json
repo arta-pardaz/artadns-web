@@ -1,0 +1,9 @@
+[
+  {"page": "index.html", "label": "صفحه اصلی", "omit_on_home": true},
+  {"page": "index.html", "fragment": "features", "label": "ویژگی‌ها"},
+  {"page": "index.html", "fragment": "preview", "label": "محیط برنامه"},
+  {"page": "download.html", "label": "دانلود"},
+  {"page": "index.html", "fragment": "dns", "label": "درباره DNS"},
+  {"page": "dns-gaming.html", "label": "DNS GAMING"},
+  {"page": "index.html", "fragment": "faq", "label": "سؤالات متداول"}
+]
