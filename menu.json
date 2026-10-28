@@ -1,5 +1,5 @@
 [
-  {"page": "index.html", "label": "صفحه اصلی", "omit_on_home": true},
+  {"page": "index.html", "label": "صفحه اصلی"},
   {"page": "index.html", "fragment": "features", "label": "ویژگی‌ها"},
   {"page": "index.html", "fragment": "preview", "label": "محیط برنامه"},
   {"page": "download.html", "label": "دانلود"},

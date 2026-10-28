@@ -65,15 +65,15 @@ def load_site():
     if not items:
         raise ValueError("Empty menu")
     for item in items:
-        if set(item) - {"page", "fragment", "label", "omit_on_home"}:
+        if set(item) - {"page", "fragment", "label"}:
             raise ValueError("Unknown menu property")
-        page, label = item["page"], item["label"]
+        page_name, label = item["page"], item["label"]
         fragment = item.get("fragment", "")
-        if not isinstance(label, str) or not label.strip() or page not in pages:
+        if not isinstance(label, str) or not label.strip() or page_name not in pages:
             raise ValueError(f"Invalid menu item: {item}")
-        if fragment and fragment not in parsed[page].ids:
-            raise ValueError(f"Missing anchor: {page}#{fragment}")
-        key = (page, fragment)
+        if fragment and fragment not in parsed[page_name].ids:
+            raise ValueError(f"Missing anchor: {page_name}#{fragment}")
+        key = (page_name, fragment)
         if key in seen:
             raise ValueError(f"Duplicate menu destination: {key}")
         seen.add(key)
@@ -84,14 +84,18 @@ def load_site():
 def render_links(items, template, page, mobile):
     links = []
     for item in items:
-        if item.get("omit_on_home") and page == "index.html":
-            continue
+        item_page = item.get("page", page)
         fragment = item.get("fragment", "")
-        href = ("" if fragment and page == item["page"] else item["page"]) + (f"#{fragment}" if fragment else "")
+        if fragment and item_page == page:
+            href = f"#{fragment}"
+        elif fragment:
+            href = f"{item_page}#{fragment}"
+        else:
+            href = item_page
         link = template.substitute(
             href=escape(href, quote=True),
             classes="nav-link mobile-link" if mobile else "nav-link",
-            active=' aria-current="page"' if page == item["page"] and not fragment else "",
+            active=' aria-current="page"' if page == item_page and not fragment else "",
             label=escape(item["label"]),
         )
         links.append(f"<li>{link}</li>" if mobile else link)

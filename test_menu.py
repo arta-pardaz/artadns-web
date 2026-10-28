@@ -32,7 +32,7 @@ class MenuTests(unittest.TestCase):
             for kind, (start, end) in parsed[page].regions.items():
                 links = Links(source[start:end]).links
                 menus.append([(link["href"], link.get("aria-current")) for link in links])
-                self.assertEqual(len(links), 6 if page == "index.html" else 7)
+                self.assertEqual(len(links), 7)
                 active = []
                 for link in links:
                     target, _, fragment = link["href"].partition("#")
@@ -44,7 +44,7 @@ class MenuTests(unittest.TestCase):
                         self.assertEqual(link["aria-current"], "page")
                         active.append(link["href"])
                     self.assertEqual(link["class"], "nav-link mobile-link" if kind == "mobile" else "nav-link")
-                self.assertEqual(active, [] if page == "index.html" else [page])
+                self.assertEqual(active, [page])
             self.assertEqual(menus[0], menus[1])
 
     def test_replaces_only_menu_contents(self):
