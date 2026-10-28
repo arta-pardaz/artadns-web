@@ -156,7 +156,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="manifest" href="site.webmanifest">
 </head>
-<body>
+<body class="page-gaming">
+  <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
 
   <header class="site-header">
     <div class="container nav-wrapper">
@@ -174,7 +175,7 @@
         <a href="index.html#preview" class="nav-link">محیط برنامه</a>
         <a href="download.html" class="nav-link">دانلود</a>
         <a href="index.html#dns" class="nav-link">درباره DNS</a>
-        <a href="dns-gaming.html" class="nav-link">DNS GAMING</a>
+        <a href="dns-gaming.html" class="nav-link" aria-current="page">DNS GAMING</a>
         <a href="index.html#faq" class="nav-link">سؤالات متداول</a>
       </nav>
 
@@ -182,7 +183,7 @@
         <a href="download.html" class="btn btn-primary btn-sm">دانلود ArtaDNS</a>
       </div>
 
-      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منو" aria-expanded="false">
+      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منو" aria-expanded="false" aria-controls="mobileMenuDrawer">
         <span></span>
         <span></span>
         <span></span>
@@ -196,19 +197,19 @@
         <li><a href="index.html#preview" class="nav-link mobile-link">محیط برنامه</a></li>
         <li><a href="download.html" class="nav-link mobile-link">دانلود</a></li>
         <li><a href="index.html#dns" class="nav-link mobile-link">درباره DNS</a></li>
-        <li><a href="dns-gaming.html" class="nav-link mobile-link">DNS GAMING</a></li>
+        <li><a href="dns-gaming.html" class="nav-link mobile-link" aria-current="page">DNS GAMING</a></li>
         <li><a href="index.html#faq" class="nav-link mobile-link">سؤالات متداول</a></li>
       </ul>
       <a href="download.html" class="btn btn-primary btn-sm mobile-cta mobile-link">دانلود ArtaDNS</a>
     </div>
   </header>
 
-  <main>
-    <section class="hero-section gaming-hero" id="hero">
+  <main id="main-content" tabindex="-1">
+    <section class="hero-section gaming-hero" id="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-badge">بهینه‌سازی DNS برای گیمرها</div>
-          <h1 class="hero-title">بهترین DNS برای بازی؛ کاهش پینگ و رفع تحریم</h1>
+          <h1 class="hero-title" id="hero-title">بهترین DNS برای بازی؛ کاهش پینگ و رفع تحریم</h1>
           <p class="hero-subtitle">راهنمای ساده برای انتخاب DNS مناسب خط اینترنت شما</p>
           <p class="hero-desc">
             بهترین DNS برای بازی یک عدد ثابت و جهانی نیست؛ انتخاب درست به ISP، شهر، نوع اینترنت و اینکه هدف شما کاهش پینگ است یا رفع تحریم بازی بستگی دارد. اگر نمی‌خواهید وارد جزئیات فنی و تست دستی شوید، <strong>ArtaDNS</strong> می‌تواند سریع‌ترین DNS مناسب خط شما را پیدا و اعمال کند.
@@ -222,7 +223,7 @@
         </div>
 
 <div class="hero-visual">
-        <div class="visual-frame">
+        <div class="visual-frame" data-tilt>
           <img src="images/app-preview.png" data-remote-url="https://artadns.ir/images/app-preview.png" alt="پیش‌نمایش بهینه‌سازی DNS برای بازی‌های آنلاین" width="800" height="500" loading="eager">
         </div>
         <div class="hero-stats">
@@ -258,18 +259,18 @@
       <div class="container">
         <div class="section-header">
           <span class="section-tag">DNSهای داخلی</span>
-          <h2 class="section-title">بهترین DNSهای داخلی برای بازی</h2>
+          <h2 class="section-title" id="internal-dns-title">بهترین DNSهای داخلی برای بازی</h2>
           <p class="section-subtitle">برای بازی‌های تحریم‌شده یا سرویس‌هایی که دسترسی ایران را محدود کرده‌اند، معمولاً DNSهای داخلی گزینه اول هستند</p>
         </div>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper" tabindex="0" role="region" aria-label="جدول سرورهای DNS">
           <table class="dns-table">
             <thead>
               <tr>
-                <th>سرویس</th>
-                <th>DNS اصلی</th>
-                <th>DNS ثانویه</th>
-                <th>مناسب برای</th>
+                <th scope="col">سرویس</th>
+                <th scope="col">DNS اصلی</th>
+                <th scope="col">DNS ثانویه</th>
+                <th scope="col">مناسب برای</th>
               </tr>
             </thead>
             <tbody>
@@ -315,18 +316,18 @@
       <div class="container">
         <div class="section-header">
           <span class="section-tag">DNSهای جهانی</span>
-          <h2 class="section-title">بهترین DNSهای جهانی</h2>
+          <h2 class="section-title" id="global-dns-title">بهترین DNSهای جهانی</h2>
           <p class="section-subtitle">اگر مشکل شما بیشتر دانلود کند، آپدیت نشدن بازی یا ناپایداری اتصال است، DNSهای جهانی هم ارزش تست دارند</p>
         </div>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper" tabindex="0" role="region" aria-label="جدول سرورهای DNS">
           <table class="dns-table">
             <thead>
               <tr>
-                <th>سرویس</th>
-                <th>DNS اصلی</th>
-                <th>DNS ثانویه</th>
-                <th>نکته</th>
+                <th scope="col">سرویس</th>
+                <th scope="col">DNS اصلی</th>
+                <th scope="col">DNS ثانویه</th>
+                <th scope="col">نکته</th>
               </tr>
             </thead>
             <tbody>
@@ -334,7 +335,7 @@
                 <td><strong>Cloudflare</strong></td>
                 <td>1.1.1.1</td>
                 <td>1.0.0.1</td>
-                <th>معمولاً سریع‌ترین انتخاب جهانی برای شروع تست</th>
+                <td>معمولاً سریع‌ترین انتخاب جهانی برای شروع تست</td>
               </tr>
               <tr>
                 <td><strong>Google</strong></td>

@@ -173,7 +173,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="manifest" href="site.webmanifest">
 </head>
-<body>
+<body class="page-download">
+  <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
 
   <header class="site-header">
     <div class="container nav-wrapper">
@@ -189,7 +190,7 @@
         <a href="index.html" class="nav-link">صفحه اصلی</a>
         <a href="index.html#features" class="nav-link">ویژگی‌ها</a>
         <a href="index.html#preview" class="nav-link">محیط برنامه</a>
-        <a href="download.html" class="nav-link">دانلود</a>
+        <a href="download.html" class="nav-link" aria-current="page">دانلود</a>
         <a href="index.html#dns" class="nav-link">درباره DNS</a>
         <a href="dns-gaming.html" class="nav-link">DNS GAMING</a>
         <a href="index.html#faq" class="nav-link">سؤالات متداول</a>
@@ -199,7 +200,7 @@
         <a href="#main-download" class="btn btn-primary btn-sm">دانلود سریع</a>
       </div>
 
-      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منو" aria-expanded="false">
+      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منو" aria-expanded="false" aria-controls="mobileMenuDrawer">
         <span></span>
         <span></span>
         <span></span>
@@ -211,7 +212,7 @@
         <li><a href="index.html" class="nav-link mobile-link">صفحه اصلی</a></li>
         <li><a href="index.html#features" class="nav-link mobile-link">ویژگی‌ها</a></li>
         <li><a href="index.html#preview" class="nav-link mobile-link">محیط برنامه</a></li>
-        <li><a href="download.html" class="nav-link mobile-link">دانلود</a></li>
+        <li><a href="download.html" class="nav-link mobile-link" aria-current="page">دانلود</a></li>
         <li><a href="index.html#dns" class="nav-link mobile-link">درباره DNS</a></li>
         <li><a href="dns-gaming.html" class="nav-link mobile-link">DNS GAMING</a></li>
         <li><a href="index.html#faq" class="nav-link mobile-link">سؤالات متداول</a></li>
@@ -220,12 +221,12 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero-section" id="hero">
+  <main id="main-content" tabindex="-1">
+    <section class="hero-section" id="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-badge">نسخه ۱.۰.۰ پایدار</div>
-          <h1 class="hero-title">دانلود ArtaDNS</h1>
+          <h1 class="hero-title" id="hero-title">دانلود ArtaDNS</h1>
           <p class="hero-subtitle">نرم‌افزار رایگان مدیریت و بهینه‌سازی DNS برای ویندوز</p>
           <p class="hero-desc">
             ArtaDNS ابزار انتخاب و تنظیم هوشمند بهترین DNS برای خط اینترنت شما است. با تست خودکار ده‌ها سرور DNS، مناسب‌ترین و پایدارترین گزینه را پیدا کرده و با یک کلیک فعال می‌کند.
@@ -240,7 +241,7 @@
         </div>
 
         <div class="hero-visual">
-          <div class="visual-frame">
+          <div class="visual-frame" data-tilt>
             <img src="images/app-preview.png" data-remote-url="https://artadns.ir/images/app-preview.png" alt="پیش‌نمایش محیط نرم‌افزار ArtaDNS" width="800" height="500" loading="eager">
           </div>
           <div class="hero-stats">
@@ -369,11 +370,12 @@
             <p>برای دانلود Runtime مناسب، معماری ویندوز خود را بررسی کنید:</p>
             <ol>
               <li>کلیدهای <kbd>Win + Pause/Break</kbd> را بزنید یا راست‌کلیک روی <strong>This PC</strong> و انتخاب <strong>Properties</strong></li>
-              <li>در بخش <strong>System type</strong> بررسی کنید:</li>
+              <li>در بخش <strong>System type</strong> بررسی کنید:
               <ul>
                 <li><strong>64-bit Operating System</strong> → دانلود Runtime x64</li>
                 <li><strong>32-bit Operating System</strong> → دانلود Runtime x86</li>
               </ul>
+              </li>
             </ol>
           </div>
         </section>

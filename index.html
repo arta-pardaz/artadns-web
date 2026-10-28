@@ -217,7 +217,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="manifest" href="site.webmanifest">
 </head>
-<body>
+<body class="page-home">
+  <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
 
   <!-- Header -->
   <header class="site-header">
@@ -243,7 +244,7 @@
         <a href="download.html" class="btn btn-primary btn-sm">دانلود ArtaDNS</a>
       </div>
 
-      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منو" aria-expanded="false">
+      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منو" aria-expanded="false" aria-controls="mobileMenuDrawer">
         <span></span>
         <span></span>
         <span></span>
@@ -264,13 +265,13 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
-    <section class="hero-section" id="hero">
+    <section class="hero-section" id="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-badge">نسخه فعال 1.0.0</div>
-          <h1 class="hero-title">پینگ کمتر، سرعت بیشتر</h1>
+          <h1 class="hero-title" id="hero-title">پینگ کمتر، سرعت بیشتر</h1>
           <p class="hero-subtitle">با بهترین DNS برای خط شما</p>
           <p class="hero-desc">
             نرم‌افزار ArtaDNS با سنجش پینگ و کیفیت سرورهای مختلف DNS روی خط اختصاصی اینترنت شما، مناسب‌ترین و پایدارترین گزینه را پیدا کرده و با یک کلیک فعال می‌نماید تا تجربه‌ای روان‌تر در بازی، وب‌گردی و دانلود داشته باشید.
@@ -285,7 +286,7 @@
         </div>
 
         <div class="hero-visual">
-          <div class="visual-frame">
+          <div class="visual-frame" data-tilt>
             <img src="images/app-preview.png" data-remote-url="https://artadns.ir/images/app-preview.png" alt="پیش‌نمایش محیط نرم‌افزار ArtaDNS" width="800" height="500" loading="eager">
           </div>
           <div class="hero-stats">
@@ -457,11 +458,11 @@
 
         <div class="faq-list">
           <div class="faq-item">
-            <button type="button" class="faq-header" aria-expanded="false">
+            <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-1">
               <span>آیا نرم‌افزار ArtaDNS کاملاً رایگان است؟</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-1">
               <div class="faq-content">
                 بله، نرم‌افزار ArtaDNS به صورت رایگان ارائه شده است و کاربران بدون پرداخت هزینه می‌توانند از تمامی قابلیت‌های آن برای تنظیم و پایش DNS استفاده کنند.
               </div>
@@ -469,11 +470,11 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-header" aria-expanded="false">
+            <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-2">
               <span>چه زمانی باید بسته Runtime را نصب کنم؟</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-2">
               <div class="faq-content">
                 اگر پیش‌نیاز Microsoft .NET Desktop Runtime 6 از قبل روی ویندوز شما نصب نباشد، هنگام اجرای برنامه پیغامی دریافت خواهید کرد. در این صورت فایل Runtime متناسب با سیستم‌عامل خود (۶۴ بیتی یا ۳۲ بیتی) را از بخش دانلود سایت دریافت و نصب فرمایید.
               </div>
@@ -481,11 +482,11 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-header" aria-expanded="false">
+            <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-3">
               <span>آیا تغییر DNS سرعت دانلود یا پهنای باند را بیشتر می‌کند؟</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-3">
               <div class="faq-content">
                 تغییر DNS پهنای باند خریداری‌شده از شرکت ارائه‌دهنده اینترنت را افزایش نمی‌دهد، اما زمان تاخیر اولیه برای اتصال به سرورها (Latency) را کاهش داده و شروع بارگذاری صفحات وب را سریع‌تر و روان‌تر می‌سازد.
               </div>
@@ -493,11 +494,11 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-header" aria-expanded="false">
+            <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-4">
               <span>چگونه می‌توانم تنظیمات کارت شبکه را به حالت پیش‌فرض بازگردانم؟</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-4">
               <div class="faq-content">
                 درون محیط برنامه ArtaDNS گزینه‌ای برای پاکسازی و بازنشانی تنظیمات در نظر گرفته شده است که با فشردن آن، DNS کارت شبکه مجدداً به حالت دریافت خودکار (DHCP) یا تنظیم اولیه ویندوز برمی‌گردد.
               </div>
@@ -505,11 +506,11 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-header" aria-expanded="false">
+            <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-5">
               <span>این نرم‌افزار روی چه سیستم‌عامل‌هایی اجرا می‌شود؟</span>
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-5">
               <div class="faq-content">
                 نسخه فعلی ArtaDNS (نسخه 1.0.0) به صورت اختصاصی برای سیستم‌عامل مایکروسافت ویندوز (ویندوز ۱۰ و ویندوز ۱۱) توسعه داده شده است.
               </div>
