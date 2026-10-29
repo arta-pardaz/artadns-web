@@ -5,7 +5,7 @@ declare(strict_types=1);
 $pageTitle = 'DNS GAMING | بهترین DNS برای بازی‌های آنلاین - ArtaDNS';
 $pageDescription = 'ArtaDNS؛ بهترین DNS برای گیمرها با پینگ پایین، رفع لگ و بهبود تجربه بازی آنلاین. تست و تنظیم DNS مناسب برای بازی‌های محبوب.';
 $canonicalUrl = 'https://artadns.ir/dns-gaming.php';
-$ogImage = 'https://artadns.ir/images/app-preview.png';
+$ogImage = 'https://artadns.ir/logo.png';
 $ogType = 'article';
 $bodyClass = 'page-gaming';
 $currentPage = 'dns-gaming';
@@ -18,7 +18,7 @@ $schemaMarkup = <<<'SCHEMA'
   "headline": "DNS GAMING | بهترین DNS برای بازی‌های آنلاین",
   "description": "بهترین DNS برای گیمرها با پینگ پایین، رفع لگ و بهبود تجربه بازی آنلاین. راهنمای کامل انتخاب DNS مناسب برای بازی.",
   "url": "https://artadns.ir/dns-gaming.php",
-  "image": "https://artadns.ir/images/app-preview.png",
+  "image": "https://artadns.ir/logo.png",
   "datePublished": "2024-01-01T00:00:00+03:30",
   "dateModified": "2024-01-01T00:00:00+03:30",
   "author": {
@@ -144,9 +144,6 @@ require __DIR__ . '/includes/header.php';
             </div>
 
 <div class="hero-visual">
-            <div class="visual-frame" data-tilt>
-                <img src="images/app-preview.png" data-remote-url="https://artadns.ir/images/app-preview.png" alt="پیش‌نمایش بهینه‌سازی DNS برای بازی‌های آنلاین" width="800" height="500" loading="eager">
-            </div>
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-val">تست خودکار</span>

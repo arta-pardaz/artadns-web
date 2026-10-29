@@ -16,7 +16,7 @@ declare(strict_types=1);
             </div>
 
             <div>
-                <h4 class="footer-section-title">اطلاعات تماس</h4>
+                <h2 class="footer-section-title">اطلاعات تماس</h2>
                 <div class="footer-contact-list">
                     <div class="footer-contact-item">
                         <span>شماره تماس:</span>
@@ -30,7 +30,7 @@ declare(strict_types=1);
             </div>
 
             <div>
-                <h4 class="footer-section-title">شبکه‌های اجتماعی و پیام‌رسان‌ها</h4>
+                <h2 class="footer-section-title">شبکه‌های اجتماعی و پیام‌رسان‌ها</h2>
                 <div class="footer-messengers">
                     <a href="https://eitaa.com/ArtaPardaz" class="messenger-link" target="_blank" rel="noopener noreferrer">
                         <span>ایتا (Eitaa)</span>

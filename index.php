@@ -5,7 +5,7 @@ declare(strict_types=1);
 $pageTitle = 'ArtaDNS | آرتا دی‌ان‌اس - پینگ کمتر، سرعت بیشتر';
 $pageDescription = 'ArtaDNS؛ ابزار انتخاب و تنظیم هوشمند بهترین DNS برای خط اینترنت شما جهت کاهش پینگ، افزایش پایداری و بهبود وب‌گردی و بازی‌های آنلاین.';
 $canonicalUrl = 'https://artadns.ir/';
-$ogImage = 'https://artadns.ir/images/app-preview.png';
+$ogImage = 'https://artadns.ir/logo.png';
 $ogType = 'website';
 $bodyClass = 'page-home';
 $currentPage = 'index';
@@ -59,7 +59,7 @@ $schemaMarkup = <<<'SCHEMA'
   "name": "ArtaDNS",
   "description": "نرم‌افزار انتخاب و تنظیم هوشمند بهترین DNS برای خط اینترنت",
   "url": "https://artadns.ir/",
-  "image": "https://artadns.ir/images/app-preview.png",
+  "image": "https://artadns.ir/logo.png",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -216,9 +216,6 @@ require __DIR__ . '/includes/header.php';
             </div>
 
             <div class="hero-visual">
-                <div class="visual-frame" data-tilt>
-                    <img src="images/app-preview.png" data-remote-url="https://artadns.ir/images/app-preview.png" alt="پیش‌نمایش محیط نرم‌افزار ArtaDNS" width="800" height="500" loading="eager">
-                </div>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <span class="stat-val">تست لحظه‌ای</span>
@@ -294,15 +291,15 @@ require __DIR__ . '/includes/header.php';
             <div class="preview-wrapper">
                 <div class="preview-details">
                     <div class="preview-item">
-                        <h4 class="preview-item-title">لیست جامع DNSهای پرکاربرد</h4>
+                        <h3 class="preview-item-title">لیست جامع DNSهای پرکاربرد</h3>
                         <p class="preview-item-desc">مجموعه‌ای از سرورهای معتبر داخلی و بین‌المللی با امکان انتخاب یا بازنشانی سریع به حالت پیش‌فرض ویندوز.</p>
                     </div>
                     <div class="preview-item">
-                        <h4 class="preview-item-title">تست پینگ زنده</h4>
+                        <h3 class="preview-item-title">تست پینگ زنده</h3>
                         <p class="preview-item-desc">مشاهده میزان تاخیر پاسخ‌دهی هر سرور بر حسب میلی‌ثانیه مستقیماً از خط و ارتباط فعلی شما.</p>
                     </div>
                     <div class="preview-item">
-                        <h4 class="preview-item-title">بدون مصرف منابع اضافه</h4>
+                        <h3 class="preview-item-title">بدون مصرف منابع اضافه</h3>
                         <p class="preview-item-desc">طراحی بسیار سبک بدون پردازش‌های پس‌زمینه مداوم و بدون تحمیل بار به سخت‌افزار یا باتری دستگاه شما.</p>
                     </div>
                 </div>

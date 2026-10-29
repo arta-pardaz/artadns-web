@@ -5,7 +5,7 @@ declare(strict_types=1);
 $pageTitle = 'دانلود ArtaDNS | دریافت نرم‌افزار مدیریت DNS - ArtaDNS';
 $pageDescription = 'دانلود رایگان ArtaDNS نسخه 1.0.0 برای ویندوز ۱۰ و ۱۱. نرم‌افزار انتخاب و تنظیم هوشمند بهترین DNS برای کاهش پینگ، افزایش پایداری و بهبود تجربه وب‌گردی و بازی آنلاین.';
 $canonicalUrl = 'https://artadns.ir/download.php';
-$ogImage = 'https://artadns.ir/images/app-preview.png';
+$ogImage = 'https://artadns.ir/logo.png';
 $ogType = 'website';
 $bodyClass = 'page-download';
 $currentPage = 'download';
@@ -45,7 +45,7 @@ $schemaMarkup = <<<'SCHEMA'
       "url": "https://artadns.ir/logo.png"
     }
   },
-  "screenshot": "https://artadns.ir/images/app-preview.png",
+  "screenshot": "https://artadns.ir/logo.png",
   "softwareRequirements": "Microsoft .NET 6 Desktop Runtime",
   "memoryRequirements": "512MB RAM",
   "storageRequirements": "50MB",
@@ -171,9 +171,6 @@ require __DIR__ . '/includes/header.php';
             </div>
 
             <div class="hero-visual">
-                <div class="visual-frame" data-tilt>
-                    <img src="images/app-preview.png" data-remote-url="https://artadns.ir/images/app-preview.png" alt="پیش‌نمایش محیط نرم‌افزار ArtaDNS" width="800" height="500" loading="eager">
-                </div>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <span class="stat-val">رایگان و باز</span>

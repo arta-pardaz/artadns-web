@@ -1,28 +1,72 @@
-﻿# ArtaDNS
+﻿# ArtaDNS - ابزار انتخاب و تنظیم هوشمند DNS
 
-> ArtaDNS is a smart DNS benchmarking and switching utility for Microsoft Windows, developed by Arta Pardaz.
-> نرم‌افزار آرتا دی‌ان‌اس ابزاری هوشمند برای سنجش پینگ، انتخاب و تنظیم بهترین سرور DNS در سیستم‌عامل ویندوز است.
+**ArtaDNS** یک نرم‌افزار رایگان ویندوزی است که بهترین سرور DNS برای خط اینترنت شما را پیدا، تست و با یک کلیک اعمال می‌کند. هدف: کاهش پینگ، افزایش پایداری، رفع تحریم بازی و بهبود تجربه وب‌گردی.
 
-ArtaDNS tests real-time latency and stability of various DNS servers directly on the user's internet connection, recommending and applying the optimal DNS server with a single click to reduce ping, improve stability, and enhance gaming and web browsing experiences.
+---
 
-## Key Features
-- **Real-Time Benchmarking**: Measures ping and response quality for multiple public and optimized DNS providers.
-- **One-Click Activation**: Changes Windows network adapter DNS automatically without needing manual configuration.
-- **Cache Flushing & Reset**: Easily restore default network settings (DHCP) or flush DNS cache when needed.
-- **Optimized for Gaming & Browsing**: Helps reduce packet jitter and connection lag for gamers and everyday browsing.
-- **Lightweight & Clean UI**: Native, modern interface tailored for Windows 10 and 11.
+## صفحات اصلی
 
-## Software Specifications
-- **Platform**: Microsoft Windows 10 / Windows 11
-- **Current Version**: 1.0.0
-- **Developer**: Arta Pardaz Sepahan (آرتا پرداز سپاهان)
-- **Official Website**: https://artadns.ir/
-- **Developer Website**: https://artapardaz.com/
-- **Direct Download**: https://artadns.ir/downloads/ArtaDNS_v1.0.0.zip
+- **[صفحه اصلی](https://artadns.ir/)** - معرفی امکانات، статистиک‌ها و راهنمای DNS
+- **[دانلود ArtaDNS](https://artadns.ir/download.html)** - دریافت نرم‌افزار، پیش‌نیازها، راهنمای نصب و پیش‌نیازهای سیستم
+- **[DNS GAMING](https://artadns.ir/dns-gaming.html)** - راهنمای کامل بهترین DNS برای بازی‌های آنلاین (داخلی و جهانی)
 
-## Contact & Channels
-- **Phone**: +98 31 95010380 (031-95010380)
-- **Address**: Isfahan, Amadegah St., Sepahan Complex, Iran
-- **Eitaa**: https://eitaa.com/ArtaPardaz
-- **Bale**: https://ble.ir/ARTAPARDAZSEPAHAN
-- **Rubika**: https://rubika.com/Artapardaz
+---
+
+## محتوای کلیدی برای استخراج
+
+### نرم‌افزار ArtaDNS
+- **نسخه**: 1.0.0 پایدار
+- **سیستم‌عامل**: ویندوز ۱۰ (نسخه ۱۸۰۹+) و ویندوز ۱۱ (۶۴ و ۳۲ بیتی)
+- **پیش‌نیاز**: Microsoft .NET 6 Desktop Runtime (ارائه شده در صفحه دانلود)
+- **حجم**: ~۵۰ مگابایت
+- **مجوز**: رایگان، Portable (بدون نصب)
+- **قابلیت‌ها**:
+  - شناسایی خودکار کارت‌های شبکه فعال
+  - تست پینگ همزمان ده‌ها سرور DNS داخلی و بین‌المللی
+  - مرتب‌سازی بر اساس تاخیر (پینگ) و میزان قطعی
+  - اعمال DNS انتخابی با یک کلیک (نیاز به دسترسی ادمین)
+  - بازگشت به حالت پیش‌فرض (DHCP) یا تنظیمات دستی
+  - رابط کاربری کاملاً فارسی و راست‌چین
+
+### سرورهای DNS پشتیبانی شده
+**داخلی (مناسب بازی و رفع تحریم):**
+- رادار گیم (10.202.10.10 / 10.202.10.11)
+- الکترو (78.157.42.100 / 78.157.42.101)
+- شکن (178.22.122.100 / 185.51.200.2)
+- ۴۰۳ (10.202.10.102 / 10.202.10.202)
+- بگذر (185.55.226.26 / 185.55.225.25)
+
+**بین‌المللی (مناسب دانلود، وب‌گردی، امنیت):**
+- Cloudflare (1.1.1.1 / 1.0.0.1)
+- Google (8.8.8.8 / 8.8.4.4)
+- Quad9 (9.9.9.9 / 149.112.112.112)
+- OpenDNS (208.67.222.222 / 208.67.220.220)
+
+---
+
+## اطلاعات تماس و توسعه‌دهنده
+
+- **توسعه‌دهنده**: آرتا پرداز (Arta Pardaz)
+- **وب‌سایت توسعه‌دهنده**: https://artapardaz.com/
+- **شماره تماس**: 031-95010380
+- **آدرس**: اصفهان، خیابان آمادگاه، مجتمع سپاهان
+- **شبکه‌های اجتماعی**: ایتا، بله، روبیکا
+
+---
+
+## راهنمای کرال (Crawl Guidance)
+
+- تمام صفحات از نظر سئو برای ایندکس‌گذاری باز هستند (`index, follow`)
+- ساختار URL: `/`، `/download.html`، `/dns-gaming.html`
+- فایل‌های استاتیک: `/css/style.css`، `/js/main.js`، `/fonts/*.woff2`، `/images/logo.png`
+- Sitemap: در ریشه سایت موجود است (sitemap.xml)
+- Robots.txt: اجازه دسترسی کامل به ربات‌ها
+
+---
+
+## نکات امنیتی و حریم خصوصی
+
+- ArtaDNS هیچ داده شخصی جمع‌آوری نمی‌کند
+- برنامه کاملاً آفلاین کار می‌کند (تست DNS‌ها مستقیماً از شبکه کاربر)
+- تنها اتصال اینترنت برای تست پینگ سرورهای DNS لازم است
+- توصیه: برنامه را فقط از سایت رسمی artadns.ir دانلود کنید

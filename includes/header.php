@@ -6,7 +6,7 @@ $currentPage = $currentPage ?? basename($_SERVER['SCRIPT_NAME'], '.php');
 $pageTitle = $pageTitle ?? 'ArtaDNS | آرتا دی‌ان‌اس - پینگ کمتر، سرعت بیشتر';
 $pageDescription = $pageDescription ?? 'ArtaDNS؛ ابزار انتخاب و تنظیم هوشمند بهترین DNS برای خط اینترنت شما جهت کاهش پینگ، افزایش پایداری و بهبود وب‌گردی و بازی‌های آنلاین.';
 $canonicalUrl = $canonicalUrl ?? 'https://artadns.ir/';
-$ogImage = $ogImage ?? 'https://artadns.ir/images/app-preview.png';
+$ogImage = $ogImage ?? 'https://artadns.ir/logo.png';
 $ogType = $ogType ?? 'website';
 $bodyClass = $bodyClass ?? 'page-home';
 $schemaMarkup = $schemaMarkup ?? '';
@@ -26,6 +26,9 @@ $schemaMarkup = $schemaMarkup ?? '';
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="preconnect" href="https://artadns.ir">
     <link rel="dns-prefetch" href="https://artadns.ir">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/Vazirmatn-Regular.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/Vazirmatn-Medium.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/Vazirmatn-SemiBold.woff2">
 
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="<?= htmlspecialchars($ogType, ENT_QUOTES, 'UTF-8') ?>">
@@ -49,7 +52,8 @@ $schemaMarkup = $schemaMarkup ?? '';
 
     <?= $schemaMarkup ?>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
     <link rel="manifest" href="site.webmanifest">
 </head>
 <body class="<?= htmlspecialchars($bodyClass, ENT_QUOTES, 'UTF-8') ?>">
