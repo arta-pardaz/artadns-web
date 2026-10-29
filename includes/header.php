@@ -53,7 +53,6 @@ $schemaMarkup = $schemaMarkup ?? '';
     <link rel="manifest" href="site.webmanifest">
 </head>
 <body class="<?= htmlspecialchars($bodyClass, ENT_QUOTES, 'UTF-8') ?>">
-    <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
 
     <!-- Header -->
     <header class="site-header">
