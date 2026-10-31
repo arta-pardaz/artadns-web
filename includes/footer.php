@@ -1,36 +1,41 @@
 <?php
 
 declare(strict_types=1);
+
+require_once __DIR__ . '/i18n.php';
+
+$currentLocale = getLocale();
+$supportedLocales = getSupportedLocales();
 ?>
     <!-- Footer -->
     <footer class="site-footer" id="contact">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <span class="footer-brand-title">ArtaDNS | آرتا دی‌ان‌اس</span>
+                <span class="footer-brand-title"><?= t('footer.brand') ?> | <?= t('meta.site_name_fa') ?></span>
                 <p class="footer-desc">
-                    ابزار کاربردی جهت انتخاب، تست پینگ و تنظیم هوشمند سرورهای DNS در ویندوز، توسعه یافته توسط <strong>آرتا پرداز</strong>.
+                    <?= t('footer.tagline') ?>
                 </p>
                 <p class="footer-desc">
-                    وب‌سایت رسمی آرتا پرداز: <a href="https://artapardaz.com/" target="_blank" rel="noopener noreferrer">artapardaz.com</a>
+                    <?= t('footer.official_site') ?> <a href="https://artapardaz.com/" target="_blank" rel="noopener noreferrer">artapardaz.com</a>
                 </p>
             </div>
 
             <div>
-                <h2 class="footer-section-title">اطلاعات تماس</h2>
+                <h2 class="footer-section-title"><?= t('footer.contact_info') ?></h2>
                 <div class="footer-contact-list">
                     <div class="footer-contact-item">
-                        <span>شماره تماس:</span>
+                        <span><?= t('footer.phone') ?>:</span>
                         <a href="tel:03195010380" dir="ltr">031-95010380</a>
                     </div>
                     <div class="footer-contact-item">
-                        <span>آدرس:</span>
-                        <span>اصفهان، خیابان آمادگاه، مجتمع سپاهان</span>
+                        <span><?= t('footer.address') ?>:</span>
+                        <span><?= t('schema.address') ?></span>
                     </div>
                 </div>
             </div>
 
             <div>
-                <h2 class="footer-section-title">شبکه‌های اجتماعی و پیام‌رسان‌ها</h2>
+                <h2 class="footer-section-title"><?= t('footer.social') ?></h2>
                 <div class="footer-messengers">
                     <a href="https://eitaa.com/ArtaPardaz" class="messenger-link" target="_blank" rel="noopener noreferrer">
                         <span>ایتا (Eitaa)</span>
@@ -43,12 +48,30 @@ declare(strict_types=1);
                     </a>
                 </div>
             </div>
+
+            <div class="footer-lang">
+                <h2 class="footer-section-title"><?= t('common.language') ?></h2>
+                <div class="lang-switcher">
+                    <?php foreach ($supportedLocales as $locale): 
+                        $langName = t('common.languages.' . $locale);
+                        $isActive = $locale === $currentLocale;
+                        $url = localeUrl($locale);
+                    ?>
+                        <a href="<?= htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>" 
+                           class="lang-btn<?= $isActive ? ' active' : '' ?>"
+                           hreflang="<?= $locale ?>"
+                           <?= $isActive ? 'aria-current="page"' : '' ?>>
+                            <?= htmlspecialchars($langName, ENT_QUOTES, 'UTF-8') ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
 
         <div class="container footer-bottom">
-            <div>&copy; 2026 ArtaDNS. تمامی حقوق برای آرتا پرداز محفوظ است.</div>
+            <div>&copy; 2026 <?= t('footer.brand') ?>. <?= t('footer.copyright') ?></div>
             <div>
-                <a href="https://artapardaz.com/" target="_blank" rel="noopener noreferrer">Arta Pardaz</a>
+                <a href="https://artapardaz.com/" target="_blank" rel="noopener noreferrer"><?= t('footer.made_by') ?></a>
             </div>
         </div>
     </footer>

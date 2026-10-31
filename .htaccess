@@ -1,8 +1,14 @@
 # ArtaDNS .htaccess
-# Apache configuration for clean URLs and security
+# Apache configuration for clean URLs, i18n and security
 
 # Enable rewrite engine
 RewriteEngine On
+
+# i18n subdirectory routing (/fa/, /en/, /ar/, /ur/, /tr/, /fr/)
+# Rewrite locale prefix to query parameter
+RewriteRule ^(fa|en|ar|ur|tr|fr)/$ /index.php?lang=$1 [L,QSA]
+RewriteRule ^(fa|en|ar|ur|tr|fr)$ /index.php?lang=$1 [L,QSA]
+RewriteRule ^(fa|en|ar|ur|tr|fr)/(.+)$ /$2?lang=$1 [L,QSA]
 
 # Remove .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -42,8 +48,8 @@ RewriteRule ^ %1 [R=301,L]
     Deny from all
 </FilesMatch>
 
-# Prevent access to config and includes directories
-<DirectoryMatch "^(config|includes)/">
+# Prevent access to config, includes and lang directories
+<DirectoryMatch "^(config|includes|lang)/">
     Order allow,deny
     Deny from all
 </DirectoryMatch>

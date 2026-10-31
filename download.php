@@ -2,22 +2,40 @@
 
 declare(strict_types=1);
 
-$pageTitle = 'دانلود ArtaDNS | دریافت نرم‌افزار مدیریت DNS - ArtaDNS';
-$pageDescription = 'دانلود رایگان ArtaDNS نسخه 1.0.0 برای ویندوز ۱۰ و ۱۱. نرم‌افزار انتخاب و تنظیم هوشمند بهترین DNS برای کاهش پینگ، افزایش پایداری و بهبود تجربه وب‌گردی و بازی آنلاین.';
-$canonicalUrl = 'https://artadns.ir/download.php';
+require_once __DIR__ . '/includes/i18n.php';
+
+$currentLocale = getLocale();
+$canonicalUrl = 'https://artadns.ir' . localeUrl($currentLocale, '/download');
+$pageTitle = t('download_page.hero.title') . ' | ' . t('meta.site_name');
+$pageDescription = t('download_page.hero.description');
 $ogImage = 'https://artadns.ir/logo.png';
 $ogType = 'website';
 $bodyClass = 'page-download';
 $currentPage = 'download';
 
-$schemaMarkup = <<<'SCHEMA'
+$schemaDesc = t('schema.business_desc');
+$schemaUrl = $canonicalUrl;
+
+$faqItems = [];
+foreach (t('download_page.faq.items') as $faq) {
+    $faqItems[] = [
+        '@type' => 'Question',
+        'name' => $faq['q'],
+        'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text' => $faq['a']
+        ]
+    ];
+}
+
+$schemaMarkup = <<<SCHEMA
 <script type="application/ld+json" id="software-schema">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "ArtaDNS",
-  "description": "نرم‌افزار انتخاب و تنظیم هوشمند بهترین DNS برای خط اینترنت جهت کاهش پینگ، افزایش پایداری و بهبود وب‌گردی و بازی‌های آنلاین.",
-  "url": "https://artadns.ir/download.php",
+  "description": "{$schemaDesc}",
+  "url": "{$schemaUrl}",
   "applicationCategory": "NetworkUtility",
   "operatingSystem": "Windows 10, Windows 11",
   "offers": {
@@ -57,9 +75,9 @@ $schemaMarkup = <<<'SCHEMA'
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "دانلود ArtaDNS",
-  "description": "صفحه دانلود رایگان نرم‌افزار ArtaDNS برای ویندوز ۱۰ و ۱۱",
-  "url": "https://artadns.ir/download.php",
+  "name": "DOWNLOAD_PAGE_TITLE",
+  "description": "DOWNLOAD_PAGE_DESC",
+  "url": "{$schemaUrl}",
   "isPartOf": {
     "@type": "WebSite",
     "name": "ArtaDNS",
@@ -77,14 +95,14 @@ $schemaMarkup = <<<'SCHEMA'
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "خانه",
+        "name": "SCHEMA_HOME",
         "item": "https://artadns.ir/"
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "دانلود",
-        "item": "https://artadns.ir/download.php"
+        "name": "SCHEMA_DOWNLOAD",
+        "item": "{$schemaUrl}"
       }
     ]
   }
@@ -94,59 +112,16 @@ $schemaMarkup = <<<'SCHEMA'
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "آیا نرم‌افزار ArtaDNS کاملاً رایگان است؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "بله، نرم‌افزار ArtaDNS به صورت رایگان ارائه شده است و کاربران بدون پرداخت هزینه می‌توانند از تمامی قابلیت‌های آن برای تنظیم و پایش DNS استفاده کنند."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "چه زمانی باید بسته Runtime را نصب کنم؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "اگر پیش‌نیاز Microsoft .NET 6 Desktop Runtime (معروف به .NET Frameworks 6) از قبل روی ویندوز شما نصب نباشد، هنگام اجرای برنامه پیغامی دریافت خواهید کرد. در این صورت فایل Runtime متناسب با سیستم‌عامل خود (۶۴ بیتی یا ۳۲ بیتی) را از بخش بالا دریافت و نصب فرمایید."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "چگونه متوجه شوم ویندوز من ۶۴ بیتی است یا ۳۲ بیتی؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "کلیدهای Win + Pause/Break را بزنید یا راست‌کلیک روی This PC و انتخاب Properties. در بخش System type اگر 64-bit Operating System نوشته شده باشد، ویندوز شما ۶۴ بیتی است و باید Runtime x64 را دانلود کنید."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "برنامه پس از دانلود اجرا نمی‌شود، چه کار کنم؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ابتدا اطمینان حاصل کنید که فایل ZIP را کاملاً استخراج (Extract) کرده‌اید. سپس فایل ArtaDNS.exe را راست‌کلیک کرده و Run as Administrator را بزنید. اگر پیام خطای .NET Runtime داد، فایل Runtime متناسب را از همین صفحه دانلود و نصب کنید."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "آیا برنامه روی ویندوز ۷ یا ۸ هم کار می‌کند؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "نسخه فعلی ArtaDNS (نسخه 1.0.0) به صورت اختصاصی برای ویندوز ۱۰ (نسخه ۱۸۰۹ به بالا) و ویندوز ۱۱ توسعه داده شده است. پشتیبانی از ویندوزهای قدیمی‌تر در نسخه‌های آینده بررسی خواهد شد."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "آیا نیاز به اتصال اینترنت برای نصب برنامه دارم؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "برای نصب خود برنامه (استخراج فایل ZIP و اجرا) نیازی به اینترنت نیست. اما برای تست پینگ سرورهای DNS و یافتن بهترین گزینه، اتصال اینترنت فعال الزامی است. همچنین در صورت عدم وجود .NET Runtime، برای دانلود آن به اینترنت نیاز دارید."
-      }
-    }
-  ]
+  "mainEntity": FAQ_ITEMS
 }
 </script>
 SCHEMA;
+
+$schemaMarkup = str_replace(
+    ['DOWNLOAD_PAGE_TITLE', 'DOWNLOAD_PAGE_DESC', 'SCHEMA_HOME', 'SCHEMA_DOWNLOAD', 'FAQ_ITEMS'],
+    [t('download_page.hero.title'), t('download_page.hero.description'), t('footer.links.home'), t('nav.download'), json_encode($faqItems, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)],
+    $schemaMarkup
+);
 
 require __DIR__ . '/includes/header.php';
 ?>
@@ -155,30 +130,30 @@ require __DIR__ . '/includes/header.php';
     <section class="hero-section" id="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div class="hero-badge">نسخه ۱.۰.۰ پایدار</div>
-                <h1 class="hero-title" id="hero-title">دانلود ArtaDNS</h1>
-                <p class="hero-subtitle">نرم‌افزار رایگان مدیریت و بهینه‌سازی DNS برای ویندوز</p>
+                <div class="hero-badge"><?= t('download_page.hero.badge') ?></div>
+                <h1 class="hero-title" id="hero-title"><?= t('download_page.hero.title') ?></h1>
+                <p class="hero-subtitle"><?= t('download_page.hero.subtitle') ?></p>
                 <p class="hero-desc">
-                    ArtaDNS ابزار انتخاب و تنظیم هوشمند بهترین DNS برای خط اینترنت شما است. با تست خودکار ده‌ها سرور DNS، مناسب‌ترین و پایدارترین گزینه را پیدا کرده و با یک کلیک فعال می‌کند.
+                    <?= t('download_page.hero.description') ?>
                 </p>
                 <div class="hero-actions">
-                    <a href="#main-download" class="btn btn-primary btn-lg">
+                    <a href="<?= localeUrl($currentLocale, '/download') ?>#main-download" class="btn btn-primary btn-lg">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        <span>برو به بخش دانلود</span>
+                        <span><?= t('download_page.hero.btn_download') ?></span>
                     </a>
-                    <a href="index.php#features" class="btn btn-secondary btn-lg">مشاهده امکانات</a>
+                    <a href="<?= localeUrl($currentLocale, '/') ?>#features" class="btn btn-secondary btn-lg"><?= t('download_page.hero.btn_features') ?></a>
                 </div>
             </div>
 
             <div class="hero-visual">
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-val">رایگان و باز</span>
-                        <span class="stat-label">بدون هزینه و اشتراک</span>
+                        <span class="stat-val"><?= t('download_page.hero.stat1.label') ?></span>
+                        <span class="stat-label"><?= t('download_page.hero.stat1.desc') ?></span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-val">سبک و سریع</span>
-                        <span class="stat-label">بدون نصب پیچیده</span>
+                        <span class="stat-val"><?= t('download_page.hero.stat2.label') ?></span>
+                        <span class="stat-label"><?= t('download_page.hero.stat2.desc') ?></span>
                     </div>
                 </div>
             </div>
@@ -188,51 +163,51 @@ require __DIR__ . '/includes/header.php';
     <section class="download-section" id="main-download">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">دریافت نرم‌افزار</span>
-                <h2 class="section-title">دانلود ArtaDNS برای ویندوز</h2>
-                <p class="section-subtitle">نسخه ۱.۰.۰ پایدار • سازگار با ویندوز ۱۰ و ۱۱ • حجم بهینه</p>
+                <span class="section-tag"><?= t('download_page.download_section.section_tag') ?></span>
+                <h2 class="section-title"><?= t('download_page.download_section.section_title') ?></h2>
+                <p class="section-subtitle"><?= t('download_page.download_section.section_subtitle') ?></p>
             </div>
 
             <div class="download-main-card">
-                <span class="version-pill">نسخه ۱.۰.۰ پایدار (v1.0.0)</span>
-                <h3 class="download-title">نسخه مخصوص سیستم‌عامل ویندوز</h3>
-                <p class="download-meta">سازگار با ویندوز ۱۰ و ۱۱ (۶۴ و ۳۲ بیتی) • حجم بهینه و سبک • بدون نیاز به نصب پیچیده</p>
+                <span class="version-pill"><?= t('download_page.download_section.version_pill') ?></span>
+                <h3 class="download-title"><?= t('download_page.download_section.title') ?></h3>
+                <p class="download-meta"><?= t('download_page.download_section.meta') ?></p>
                 <div class="download-actions">
                     <a href="https://artadns.ir/downloads/ArtaDNS_v1.0.0.zip" class="btn btn-primary btn-lg" download>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        <span>دانلود فایل فشرده (ArtaDNS_v1.0.0.zip)</span>
+                        <span><?= t('download_page.download_section.btn_text') ?></span>
                     </a>
                 </div>
-                <p class="download-hint">پس از دانلود، فایل را از حالت فشرده خارج کرده و نرم‌افزار ArtaDNS.exe را اجرا نمایید.</p>
+                <p class="download-hint"><?= t('download_page.download_section.hint') ?></p>
             </div>
 
             <div class="runtime-box">
                 <div class="runtime-notice">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                     <div>
-                        <strong>نیاز به اجرای برنامه (Runtime):</strong>
-                        این برنامه مبتنی بر مایکروسافت .NET 6 (معروف به .NET Frameworks 6) است. چنانچه در هنگام اجرای ArtaDNS با پیام نیاز به نصب Runtime مواجه شدید، می‌توانید نسخه متناسب با سیستم خود را از لینک‌های زیر دریافت نمایید.
+                        <strong><?= t('download_page.runtime.notice_title') ?></strong>
+                        <?= t('download_page.runtime.notice_desc') ?>
                     </div>
                 </div>
 
                 <div class="runtime-grid">
                     <div class="runtime-card">
                         <div class="runtime-header">
-                            <span class="runtime-title">Windows Desktop Runtime 6.0.10 (x64)</span>
-                            <span class="runtime-desc">مناسب برای سیستم‌عامل‌های ۶۴ بیتی ویندوز (پیشنهاد شده)</span>
+                            <span class="runtime-title"><?= t('download_page.runtime.x64_title') ?></span>
+                            <span class="runtime-desc"><?= t('download_page.runtime.x64_desc') ?></span>
                         </div>
                         <a href="https://artadns.ir/downloads/windowsdesktop-runtime-6.0.10-win-x64.zip" class="btn btn-outline btn-sm" download>
-                            دانلود Runtime 64 بیتی
+                            <?= t('download_page.runtime.x64_btn') ?>
                         </a>
                     </div>
 
                     <div class="runtime-card">
                         <div class="runtime-header">
-                            <span class="runtime-title">Windows Desktop Runtime 6.0.10 (x86)</span>
-                            <span class="runtime-desc">مناسب برای سیستم‌عامل‌های ۳۲ بیتی ویندوز</span>
+                            <span class="runtime-title"><?= t('download_page.runtime.x86_title') ?></span>
+                            <span class="runtime-desc"><?= t('download_page.runtime.x86_desc') ?></span>
                         </div>
                         <a href="https://artadns.ir/downloads/windowsdesktop-runtime-6.0.10-win-x86.zip" class="btn btn-outline btn-sm" download>
-                            دانلود Runtime 32 بیتی
+                            <?= t('download_page.runtime.x86_btn') ?>
                         </a>
                     </div>
                 </div>
@@ -240,36 +215,35 @@ require __DIR__ . '/includes/header.php';
 
             <section class="install-guide" style="margin-top: 3rem;">
                 <div class="section-header">
-                    <span class="section-tag">راهنمای نصب</span>
-                    <h2 class="section-title">نحوه نصب و اجرای ArtaDNS</h2>
-                    <p class="section-subtitle">مراحل ساده برای راه‌اندازی سریع نرم‌افزار</p>
+                    <span class="section-tag"><?= t('download_page.install_guide.section_tag') ?></span>
+                    <h2 class="section-title"><?= t('download_page.install_guide.section_title') ?></h2>
+                    <p class="section-subtitle"><?= t('download_page.install_guide.section_subtitle') ?></p>
                 </div>
 
 <div class="article-content" style="max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
-                    <h3>۱. دانلود فایل‌ها</h3>
-                    <p>فایل <strong>ArtaDNS_v1.0.0.zip</strong> را از دکمه بالا دانلود کنید. اگر در هنگام اجرا پیام نصب .NET Runtime (معروف به .NET Frameworks) دریافت کردید، فایل Runtime متناسب با ویندوز خود (۶۴ بیتی یا ۳۲ بیتی) را نیز دریافت نمایید.</p>
+                    <h3><?= t('download_page.install_guide.step1_title') ?></h3>
+                    <p><?= t('download_page.install_guide.step1_desc') ?></p>
 
-                    <h3>۲. استخراج فایل‌ها</h3>
-                    <p>روی فایل ZIP دانلود شده راست‌کلیک کرده و گزینه <strong>Extract All</strong> یا <strong>Extract Here</strong> را انتخاب کنید. مطمئن شوید فایل‌های برنامه در یک پوشه جداگانه استخراج شده‌اند.</p>
+                    <h3><?= t('download_page.install_guide.step2_title') ?></h3>
+                    <p><?= t('download_page.install_guide.step2_desc') ?></p>
 
-                    <h3>۳. نصب Runtime (در صورت نیاز)</h3>
-                    <p>اگر ویندوز شما فاقد <strong>Microsoft .NET 6 Desktop Runtime (معروف به .NET Frameworks 6)</strong> باشد، فایل Runtime دانلود شده را اجرا کرده و مراحل نصب را طی کنید. معمولاً ویندوز ۱۰/۱۱ آپدیت‌شده این پیش‌نیاز را دارند.</p>
+                    <h3><?= t('download_page.install_guide.step3_title') ?></h3>
+                    <p><?= t('download_page.install_guide.step3_desc') ?></p>
 
-                    <h3>۴. اجرای برنامه</h3>
-                    <p>وارد پوشه استخراج شده شده و فایل <strong>ArtaDNS.exe</strong> را دو بار کلیک کنید. برنامه بدون نیاز به نصب (Portable) اجرا می‌شود.</p>
+                    <h3><?= t('download_page.install_guide.step4_title') ?></h3>
+                    <p><?= t('download_page.install_guide.step4_desc') ?></p>
 
-                    <h3>۵. استفاده از برنامه</h3>
+                    <h3><?= t('download_page.install_guide.step5_title') ?></h3>
                     <ul>
-                        <li>برنامه کارت‌های شبکه فعال را شناسایی می‌کند</li>
-                        <li>با کلیک روی دکمه <strong>تست DNS</strong>، بهترین سرور برای خط شما پیدا می‌شود</li>
-                        <li>نتیجه پیشنهادی را با یک کلیک روی کارت شبکه اعمال کنید</li>
-                        <li>در صورت نیاز، می‌توانید DNS را به حالت پیش‌فرض (DHCP) برگردانید</li>
+                        <?php foreach (t('download_page.install_guide.step5_items') as $item): ?>
+                            <li><?= $item ?></li>
+                        <?php endforeach; ?>
                     </ul>
 
                     <div class="runtime-notice" style="margin-top: 1.5rem;">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                         <div>
-                            <strong>نکته مهم:</strong> برای اعمال تغییرات DNS نیاز به دسترسی ادمین (Run as Administrator) دارید. برنامه به طور خودکار درخواست ارتقای سطح دسترسی را نمایش می‌دهد.
+                            <strong><?= t('download_page.install_guide.admin_note') ?></strong>
                         </div>
                     </div>
                 </div>
@@ -277,30 +251,30 @@ require __DIR__ . '/includes/header.php';
 
             <section class="requirements" style="margin-top: 3rem;">
                 <div class="section-header">
-                    <span class="section-tag">پیش‌نیازها</span>
-                    <h2 class="section-title">پیش‌نیازهای سیستم</h2>
-                    <p class="section-subtitle">محدوده سیستم‌عامل و سخت‌افزاری برای اجرای بهینه</p>
+                    <span class="section-tag"><?= t('download_page.requirements.section_tag') ?></span>
+                    <h2 class="section-title"><?= t('download_page.requirements.section_title') ?></h2>
+                    <p class="section-subtitle"><?= t('download_page.requirements.section_subtitle') ?></p>
                 </div>
 
                 <div class="article-content" style="max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
                     <ul>
-                        <li><strong>سیستم‌عامل:</strong> ویندوز ۱۰ (نسخه ۱۸۰۹ یا جدیدتر) یا ویندوز ۱۱ - هر دو نسخه ۶۴ بیتی و ۳۲ بیتی</li>
-                        <li><strong>پیش‌نیاز نرم‌افزاری:</strong> Microsoft .NET 6 Desktop Runtime (معروف به .NET Frameworks 6) نسخه 6.0.10 یا جدیدتر (در صورت عدم وجود، لینک دانلود در بالا موجود است)</li>
-                        <li><strong>معماری پردازنده:</strong> x64 (۶۴ بیتی) یا x86 (۳۲ بیتی)</li>
-                        <li><strong>حافظه رم:</strong> حداقل ۵۱۲ مگابایت رم آزاد (برنامه بسیار سبک است)</li>
-                        <li><strong>فضای دیسک:</strong> حدود ۵۰ مگابایت فضای خالی برای فایل‌های برنامه</li>
-                        <li><strong>دسترسی شبکه:</strong> برای تست پینگ سرورهای DNS نیاز به اتصال اینترنت فعال</li>
-                        <li><strong>مجوز اجرا:</strong> نیاز به اجرای برنامه با دسترسی Administrator برای اعمال تنظیمات شبکه</li>
+                        <li><?= t('download_page.requirements.os') ?></li>
+                        <li><?= t('download_page.requirements.runtime') ?></li>
+                        <li><?= t('download_page.requirements.arch') ?></li>
+                        <li><?= t('download_page.requirements.ram') ?></li>
+                        <li><?= t('download_page.requirements.disk') ?></li>
+                        <li><?= t('download_page.requirements.network') ?></li>
+                        <li><?= t('download_page.requirements.admin') ?></li>
                     </ul>
 
-                    <h3 style="margin-top: 1.5rem;">راهنمای بررسی معماری ویندوز</h3>
-                    <p>برای دانلود Runtime مناسب، معماری ویندوز خود را بررسی کنید:</p>
+                    <h3 style="margin-top: 1.5rem;"><?= t('download_page.requirements.check_arch_title') ?></h3>
+                    <p><?= t('download_page.requirements.check_arch_desc') ?></p>
                     <ol>
-                        <li>کلیدهای <kbd>Win + Pause/Break</kbd> را بزنید یا راست‌کلیک روی <strong>This PC</strong> و انتخاب <strong>Properties</strong></li>
-                        <li>در بخش <strong>System type</strong> بررسی کنید:
+                        <li><?= t('download_page.requirements.step1') ?></li>
+                        <li><?= t('download_page.requirements.step2') ?>
                         <ul>
-                            <li><strong>64-bit Operating System</strong> → دانلود Runtime x64</li>
-                            <li><strong>32-bit Operating System</strong> → دانلود Runtime x86</li>
+                            <li><?= t('download_page.requirements.x64_desc2') ?></li>
+                            <li><?= t('download_page.requirements.x86_desc2') ?></li>
                         </ul>
                         </li>
                     </ol>
@@ -309,28 +283,23 @@ require __DIR__ . '/includes/header.php';
 
             <section class="changelog" style="margin-top: 3rem;">
                 <div class="section-header">
-                    <span class="section-tag">تغییرات نسخه</span>
-                    <h2 class="section-title">یادداشت‌های انتشار نسخه ۱.۰.۰</h2>
+                    <span class="section-tag"><?= t('download_page.changelog.section_tag') ?></span>
+                    <h2 class="section-title"><?= t('download_page.changelog.section_title') ?></h2>
                 </div>
 
                 <div class="article-content" style="max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
-                    <h3>ویژگی‌های نسخه اولیه (v1.0.0)</h3>
+                    <h3><?= t('download_page.changelog.features_title') ?></h3>
                     <ul>
-                        <li>شناسایی خودکار کارت‌های شبکه فعال سیستم</li>
-                        <li>تست پینگ همزمان ده‌ها سرور DNS داخلی و بین‌المللی</li>
-                        <li>نمایش نتایج با مرتب‌سازی بر اساس تاخیر (پینگ) و میزان قطعی</li>
-                        <li>اعمال DNS انتخابی با یک کلیک (نیاز به دسترسی ادمین)</li>
-                        <li>بازگردانی DNS به حالت پیش‌فرض ویندوز (DHCP) یا تنظیمات دستی</li>
-                        <li>رابط کاربری کاملاً فارسی و راست‌چین</li>
-                        <li>حالت Portable - بدون نیاز به نصب در ویندوز</li>
-                        <li>نمایش جزئیات هر سرور DNS (نام، آدرس IP، مکان، پینگ، وضعیت)</li>
+                        <?php foreach (t('download_page.changelog.features_list') as $feature): ?>
+                            <li><?= $feature ?></li>
+                        <?php endforeach; ?>
                     </ul>
 
-                    <h3 style="margin-top: 1.5rem;">سرورهای DNS پشتیبانی شده</h3>
-                    <p>برنامه شامل سرورهای معتبر زیر برای تست و انتخاب است:</p>
+                    <h3 style="margin-top: 1.5rem;"><?= t('download_page.changelog.servers_title') ?></h3>
+                    <p><?= t('download_page.changelog.servers_desc') ?></p>
                     <ul>
-                        <li><strong>داخلی (مناسب بازی و رفع تحریم):</strong> رادار گیم، الکترو، شکن، ۴۰۳، بگذر</li>
-                        <li><strong>بین‌المللی (مناسب دانلود، وب‌گردی، امنیت):</strong> Cloudflare (1.1.1.1)، Google (8.8.8.8)، Quad9، OpenDNS</li>
+                        <li><?= t('download_page.changelog.internal_servers') ?></li>
+                        <li><?= t('download_page.changelog.global_servers') ?></li>
                     </ul>
                 </div>
             </section>
@@ -340,83 +309,25 @@ require __DIR__ . '/includes/header.php';
     <section class="faq-section" id="faq">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">پاسخ به ابهامات</span>
-                <h2 class="section-title">پرسش‌های متداول درباره دانلود و نصب</h2>
-                <p class="section-subtitle">پاسخ کوتاه به سوالاتی که ممکن است درباره دریافت و راه‌اندازی ArtaDNS داشته باشید</p>
+                <span class="section-tag"><?= t('download_page.faq.section_tag') ?></span>
+                <h2 class="section-title"><?= t('download_page.faq.section_title') ?></h2>
+                <p class="section-subtitle"><?= t('download_page.faq.section_subtitle') ?></p>
             </div>
 
             <div class="faq-list">
-                <div class="faq-item">
-                    <button type="button" class="faq-header" aria-expanded="false">
-                        <span>آیا نرم‌افزار ArtaDNS کاملاً رایگان است؟</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-body">
-                        <div class="faq-content">
-                            بله، نرم‌افزار ArtaDNS به صورت رایگان ارائه شده است و کاربران بدون پرداخت هزینه می‌توانند از تمامی قابلیت‌های آن برای تنظیم و پایش DNS استفاده کنند.
+                <?php foreach (t('download_page.faq.items') as $index => $faq): ?>
+                    <div class="faq-item">
+                        <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-dl-<?= $index + 1 ?>">
+                            <span><?= htmlspecialchars($faq['q'], ENT_QUOTES, 'UTF-8') ?></span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-body" id="faq-dl-<?= $index + 1 ?>">
+                            <div class="faq-content">
+                                <?= htmlspecialchars($faq['a'], ENT_QUOTES, 'UTF-8') ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="faq-item">
-                    <button type="button" class="faq-header" aria-expanded="false">
-                        <span>چه زمانی باید بسته Runtime را نصب کنم؟</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-body">
-                        <div class="faq-content">
-                            اگر پیش‌نیاز Microsoft .NET 6 Desktop Runtime (معروف به .NET Frameworks 6) از قبل روی ویندوز شما نصب نباشد، هنگام اجرای برنامه پیغامی دریافت خواهید کرد. در این صورت فایل Runtime متناسب با سیستم‌عامل خود (۶۴ بیتی یا ۳۲ بیتی) را از بخش بالا دریافت و نصب فرمایید.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button type="button" class="faq-header" aria-expanded="false">
-                        <span>چگونه متوجه شوم ویندوز من ۶۴ بیتی است یا ۳۲ بیتی؟</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-body">
-                        <div class="faq-content">
-                            کلیدهای <kbd>Win + Pause/Break</kbd> را بزنید یا راست‌کلیک روی <strong>This PC</strong> و انتخاب <strong>Properties</strong>. در بخش <strong>System type</strong> اگر <strong>64-bit Operating System</strong> نوشته شده باشد، ویندوز شما ۶۴ بیتی است و باید Runtime x64 را دانلود کنید.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button type="button" class="faq-header" aria-expanded="false">
-                        <span>برنامه پس از دانلود اجرا نمی‌شود، چه کار کنم؟</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-body">
-                        <div class="faq-content">
-                            ابتدا اطمینان حاصل کنید که فایل ZIP را کاملاً استخراج (Extract) کرده‌اید. سپس فایل <strong>ArtaDNS.exe</strong> را راست‌کلیک کرده و <strong>Run as Administrator</strong> را بزنید. اگر پیام خطای .NET Runtime داد، فایل Runtime متناسب را از همین صفحه دانلود و نصب کنید.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button type="button" class="faq-header" aria-expanded="false">
-                        <span>آیا برنامه روی ویندوز ۷ یا ۸ هم کار می‌کند؟</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-body">
-                        <div class="faq-content">
-                            نسخه فعلی ArtaDNS (نسخه 1.0.0) به صورت اختصاصی برای ویندوز ۱۰ (نسخه ۱۸۰۹ به بالا) و ویندوز ۱۱ توسعه داده شده است. پشتیبانی از ویندوزهای قدیمی‌تر در نسخه‌های آینده بررسی خواهد شد.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button type="button" class="faq-header" aria-expanded="false">
-                        <span>آیا نیاز به اتصال اینترنت برای نصب برنامه دارم؟</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-body">
-                        <div class="faq-content">
-                            برای نصب خود برنامه (استخراج فایل ZIP و اجرا) نیازی به اینترنت نیست. اما برای <strong>تست پینگ سرورهای DNS و یافتن بهترین گزینه</strong>، اتصال اینترنت فعال الزامی است. همچنین در صورت عدم وجود .NET Runtime، برای دانلود آن به اینترنت نیاز دارید.
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -424,13 +335,13 @@ require __DIR__ . '/includes/header.php';
     <section class="final-cta-section">
         <div class="container">
             <div class="final-cta-box">
-                <h2 class="final-cta-title">آماده بهبود سرعت و کیفیت اتصال خود هستید؟</h2>
+                <h2 class="final-cta-title"><?= t('download_page.final_cta.title') ?></h2>
                 <p class="final-cta-desc">
-                    همین حالا نرم‌افزار ArtaDNS را به رایگان دریافت کرده و با یک کلیک بهترین سرور DNS را برای خط اینترنت خود تنظیم نمایید.
+                    <?= t('download_page.final_cta.desc') ?>
                 </p>
                 <a href="https://artadns.ir/downloads/ArtaDNS_v1.0.0.zip" class="btn btn-primary btn-lg" download>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    <span>دانلود رایگان ArtaDNS برای ویندوز</span>
+                    <span><?= t('download_page.final_cta.btn_text') ?></span>
                 </a>
             </div>
         </div>
