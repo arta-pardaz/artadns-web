@@ -29,6 +29,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (desktopMedia.matches) closeMenu();
   }
 
+  const langDropdown = document.querySelector('[data-lang-dropdown]');
+  if (langDropdown) {
+    const langToggle = langDropdown.querySelector('.lang-toggle');
+    const langMenu = langDropdown.querySelector('.lang-menu');
+    const closeLangMenu = () => {
+      langDropdown.classList.remove('is-open');
+      if (langToggle) langToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    if (langToggle) {
+      langToggle.addEventListener('click', event => {
+        event.stopPropagation();
+        const isOpen = langDropdown.classList.toggle('is-open');
+        langToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    document.addEventListener('click', event => {
+      if (!langDropdown.contains(event.target)) closeLangMenu();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeLangMenu();
+    });
+
+    if (langMenu) {
+      langMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeLangMenu);
+      });
+    }
+  }
+
   const faqItems = document.querySelectorAll('.faq-item');
   const faqs = [];
   const uniqueId = base => {

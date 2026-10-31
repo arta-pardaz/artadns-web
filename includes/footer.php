@@ -61,7 +61,8 @@ $supportedLocales = getSupportedLocales();
                            class="lang-btn<?= $isActive ? ' active' : '' ?>"
                            hreflang="<?= $locale ?>"
                            <?= $isActive ? 'aria-current="page"' : '' ?>>
-                            <?= htmlspecialchars($langName, ENT_QUOTES, 'UTF-8') ?>
+                            <span class="lang-badge"><?= strtoupper($locale) ?></span>
+                            <span class="lang-name"><?= htmlspecialchars($langName, ENT_QUOTES, 'UTF-8') ?></span>
                         </a>
                     <?php endforeach; ?>
                 </div>
