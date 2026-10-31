@@ -1,6 +1,9 @@
 # ArtaDNS .htaccess
 # Apache configuration for clean URLs, i18n and security
 
+# Serve the multilingual PHP homepage instead of the legacy index.html
+DirectoryIndex index.php index.html
+
 # Enable rewrite engine
 RewriteEngine On
 
